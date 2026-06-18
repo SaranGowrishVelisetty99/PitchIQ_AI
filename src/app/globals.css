@@ -1,0 +1,403 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-scoreboard: var(--font-scoreboard);
+  --font-commentary: var(--font-commentary);
+
+  /* Pitch depths */
+  --color-pitch-900: #05150D;
+  --color-pitch-800: #0A2416;
+  --color-pitch-700: #0F341F;
+  --color-pitch-600: #144528;
+  --color-pitch-500: #1A5A33;
+  --color-pitch-400: #227A3E;
+  --color-pitch-300: #34A853;
+
+  /* Gold accent */
+  --color-gold-50: #FFF8E1;
+  --color-gold-100: #FFECB3;
+  --color-gold-200: #FFE082;
+  --color-gold-300: #FFD54F;
+  --color-gold-400: #FFE066;
+  --color-gold-500: #FFD700;
+  --color-gold-600: #E6C200;
+  --color-gold-700: #BFA000;
+  --color-gold-800: #997A00;
+  --color-gold-900: #735500;
+
+  /* Team colors */
+  --color-home: #0066FF;
+  --color-home-glow: rgba(0, 102, 255, 0.3);
+  --color-away: #FF2D2D;
+  --color-away-glow: rgba(255, 45, 45, 0.3);
+
+  /* Status colors */
+  --color-goal: #FFD700;
+  --color-var: #FF6B00;
+  --color-momentum: #00E676;
+  --color-card-yellow: #FFB800;
+  --color-card-red: #E53935;
+  --color-xg: #A855F7;
+  --color-injury: #FF6B6B;
+  --color-substitution: #4FC3F7;
+
+  /* Surfaces */
+  --color-surface-glass: rgba(10, 36, 22, 0.85);
+  --color-surface-card: #0F341F;
+  --color-surface-elevated: #1A5A33;
+
+  /* Text */
+  --color-text-primary: #FAFAFA;
+  --color-text-secondary: #D1D5DB;
+  --color-text-tertiary: #9CA3AF;
+  --color-text-inverse: #05150D;
+  --color-text-link: #60A5FA;
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-xxl: 32px;
+  --radius-full: 9999px;
+}
+
+:root {
+  /* Backgrounds */
+  --background: #05150D;
+  --foreground: #FAFAFA;
+
+  /* Card surfaces */
+  --card: #0F341F;
+  --card-foreground: #FAFAFA;
+  --popover: #0F341F;
+  --popover-foreground: #FAFAFA;
+
+  /* Brand colors - dark theme only */
+  --primary: #FFD700;
+  --primary-foreground: #05150D;
+  --secondary: #0F341F;
+  --secondary-foreground: #D1D5DB;
+  --muted: #144528;
+  --muted-foreground: #9CA3AF;
+  --accent: #34A853;
+  --accent-foreground: #FAFAFA;
+  --destructive: #E53935;
+  --destructive-foreground: #FAFAFA;
+
+  /* Borders */
+  --border: rgba(255, 215, 0, 0.12);
+  --input: #144528;
+  --ring: #FFD700;
+
+  /* Charts */
+  --chart-1: #0066FF;
+  --chart-2: #FF2D2D;
+  --chart-3: #FFD700;
+  --chart-4: #00E676;
+  --chart-5: #A855F7;
+
+  /* Radius base */
+  --radius: 0.625rem;
+
+  /* Sidebar */
+  --sidebar: #0A2416;
+  --sidebar-foreground: #D1D5DB;
+  --sidebar-primary: #FFD700;
+  --sidebar-primary-foreground: #05150D;
+  --sidebar-accent: #144528;
+  --sidebar-accent-foreground: #FAFAFA;
+  --sidebar-border: rgba(255, 215, 0, 0.08);
+  --sidebar-ring: #FFD700;
+}
+
+/* ============================================================
+   KEYFRAMES - Stadium Atmosphere
+   ============================================================ */
+
+@keyframes pitchScan {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+@keyframes floodlightSweep {
+  0% { opacity: 0.1; transform: translateX(-100%) skewX(-10deg); }
+  50% { opacity: 0.25; transform: translateX(100%) skewX(-10deg); }
+  100% { opacity: 0.1; transform: translateX(200%) skewX(-10deg); }
+}
+
+@keyframes stadiumPulse {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(1.08); }
+}
+
+@keyframes goalExplosion {
+  0% { transform: scale(0.3) rotate(-5deg); opacity: 0; }
+  40% { transform: scale(1.2) rotate(1deg); opacity: 1; }
+  60% { transform: scale(0.95) rotate(0deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes netRipple {
+  0% { transform: scaleX(1); opacity: 0.3; }
+  25% { transform: scaleX(1.06); opacity: 0.7; }
+  50% { transform: scaleX(0.97); opacity: 0.4; }
+  75% { transform: scaleX(1.03); opacity: 0.2; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+@keyframes momentumBreathe {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.04); }
+}
+
+@keyframes confetti {
+  0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg) translateX(var(--drift, 50px)); opacity: 0; }
+}
+
+@keyframes varScan {
+  0% { clip-path: inset(0 100% 0 0); }
+  40% { clip-path: inset(0 0% 0 0); }
+  60% { clip-path: inset(0 0% 0 0); }
+  100% { clip-path: inset(0 100% 0 0); }
+}
+
+@keyframes scoreboardSlide {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes floatDrift {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  25% { transform: translateY(-12px) translateX(6px); }
+  50% { transform: translateY(-6px) translateX(-4px); }
+  75% { transform: translateY(-18px) translateX(8px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px var(--glow-color, rgba(255, 215, 0, 0.15)); }
+  50% { box-shadow: 0 0 40px var(--glow-color, rgba(255, 215, 0, 0.3)); }
+}
+
+@keyframes tunnelWalk {
+  0% { transform: perspective(600px) rotateX(5deg) translateZ(-100px); opacity: 0; }
+  50% { opacity: 0.5; }
+  100% { transform: perspective(600px) rotateX(0deg) translateZ(0); opacity: 1; }
+}
+
+@keyframes grassWave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+.animate-pitchScan { background-size: 200% 100%; animation: pitchScan 12s linear infinite; }
+.animate-floodlight { animation: floodlightSweep 6s ease-in-out infinite; }
+.animate-stadiumPulse { animation: stadiumPulse 4s ease-in-out infinite; }
+.animate-goalExplosion { animation: goalExplosion 1.2s ease-out forwards; }
+.animate-netRipple { animation: netRipple 1.5s ease-out forwards; }
+.animate-momentumBreathe { animation: momentumBreathe 3s ease-in-out infinite; transform-origin: bottom; }
+.animate-confetti { animation: confetti 2.5s ease-out forwards; }
+.animate-varScan { animation: varScan 2s ease-in-out forwards; }
+.animate-scoreboardSlide { animation: scoreboardSlide 0.6s ease-out forwards; }
+.animate-fadeInUp { animation: fadeInUp 0.5s ease-out forwards; }
+.animate-fadeInScale { animation: fadeInScale 0.4s ease-out forwards; }
+.animate-floatDrift { animation: floatDrift 8s ease-in-out infinite; }
+.animate-shimmer { background-size: 200% 100%; animation: shimmer 3s ease-in-out infinite; }
+.animate-pulseGlow { animation: pulseGlow 3s ease-in-out infinite; }
+.animate-tunnelWalk { animation: tunnelWalk 1.2s ease-out forwards; }
+.animate-grassWave { background-size: 200% 100%; animation: grassWave 8s ease-in-out infinite; }
+
+/* Stagger delays */
+.stagger-1 { animation-delay: 0.08s; }
+.stagger-2 { animation-delay: 0.16s; }
+.stagger-3 { animation-delay: 0.24s; }
+.stagger-4 { animation-delay: 0.32s; }
+.stagger-5 { animation-delay: 0.4s; }
+.stagger-6 { animation-delay: 0.48s; }
+
+/* Glassmorphism */
+.glass-surface {
+  background: rgba(10, 36, 22, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 215, 0, 0.12);
+}
+
+.glass-surface-light {
+  background: rgba(10, 36, 22, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 215, 0, 0.08);
+}
+
+/* Text styles */
+.text-scoreboard {
+  font-family: var(--font-scoreboard), monospace;
+  font-feature-settings: "tnum" on;
+  letter-spacing: 0.02em;
+}
+
+.text-commentary {
+  font-family: var(--font-commentary), sans-serif;
+}
+
+/* Focus styles */
+.custom-focus:focus-visible {
+  outline: 2px solid #FFD700;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A2416;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #144528;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1A5A33;
+}
+
+/* Hide native scrollbar for custom-scroll areas */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Pitch grass texture */
+.pitch-texture {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 60px,
+    rgba(255, 255, 255, 0.02) 60px,
+    rgba(255, 255, 255, 0.02) 61px
+  );
+  background-size: 61px 100%;
+}
+
+/* Stadium dots texture */
+.stadium-dots {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Team gradient backgrounds */
+.team-gradient-home {
+  background: linear-gradient(135deg, #0066FF 0%, #0044AA 100%);
+}
+
+.team-gradient-away {
+  background: linear-gradient(135deg, #FF2D2D 0%, #CC0000 100%);
+}
+
+.team-gradient-gold {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA000 100%);
+}
+
+/* Responsive text utility */
+.text-responsive-xl {
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  line-height: 1.05;
+  font-weight: 800;
+}
+
+.text-responsive-lg {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.text-responsive-md {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+/* Matches the broadcast bar style */
+@keyframes livePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.live-dot {
+  animation: livePulse 1.5s ease-in-out infinite;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pitchScan,
+  .animate-floodlight,
+  .animate-stadiumPulse,
+  .animate-goalExplosion,
+  .animate-netRipple,
+  .animate-momentumBreathe,
+  .animate-confetti,
+  .animate-varScan,
+  .animate-scoreboardSlide,
+  .animate-fadeInUp,
+  .animate-fadeInScale,
+  .animate-floatDrift,
+  .animate-shimmer,
+  .animate-pulseGlow,
+  .animate-tunnelWalk,
+  .animate-grassWave,
+  .live-dot {
+    animation: none !important;
+  }
+}
+
+/* Base layer */
+@layer base {
+  * {
+    @apply border-pitch-700;
+  }
+  body {
+    @apply bg-background text-foreground font-commentary antialiased;
+  }
+  ::selection {
+    background-color: rgba(255, 215, 0, 0.3);
+    color: #FAFAFA;
+  }
+}

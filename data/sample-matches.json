@@ -1,0 +1,85 @@
+[
+  {
+    "id": "arg-fra-2022",
+    "homeTeam": "Argentina",
+    "awayTeam": "France",
+    "competition": "FIFA World Cup 2022 Final",
+    "formations": { "home": "4-4-2", "away": "4-2-3-1" },
+    "events": [
+      { "minute": 23, "type": "goal", "team": "home", "player": "Messi", "description": "Penalty converted after Di María was fouled in the box" },
+      { "minute": 36, "type": "goal", "team": "home", "player": "Di María", "description": "Clinical finish from Álvarez's pass after a swift counter-attack" },
+      { "minute": 41, "type": "substitution", "team": "away", "player": "Thuram on", "description": "Thuram replaced Giroud to add pace up front" },
+      { "minute": 41, "type": "substitution", "team": "away", "player": "Kolo Muani on", "description": "Kolo Muani replaced Dembélé for attacking freshness" },
+      { "minute": 59, "type": "substitution", "team": "home", "player": "Acuña on", "description": "Acuña replaced Di María to protect the lead" },
+      { "minute": 71, "type": "substitution", "team": "home", "player": "Paredes on", "description": "Paredes replaced De Paul to strengthen midfield" },
+      { "minute": 80, "type": "goal", "team": "away", "player": "Mbappé", "description": "Penalty awarded after Muani was brought down in the box" },
+      { "minute": 81, "type": "goal", "team": "away", "player": "Mbappé", "description": "Stunning volley from Thuram's flick-on, one-touch finish" },
+      { "minute": 90, "type": "substitution", "team": "home", "player": "Montiel on", "description": "Montiel replaced Molina for extra-time defensive solidity" },
+      { "minute": 96, "type": "substitution", "team": "away", "player": "Camavinga on", "description": "Camavinga replaced Rabiot for midfield energy" },
+      { "minute": 108, "type": "goal", "team": "home", "player": "Messi", "description": "Rebound tap-in after Lautaro's shot was saved" },
+      { "minute": 118, "type": "goal", "team": "away", "player": "Mbappé", "description": "Penalty after Montiel's handball, Mbappé completes hat-trick" },
+      { "minute": 120, "type": "shot", "team": "away", "player": "Kolo Muani", "description": "Last-minute chance saved by Martínez's legendary save" }
+    ],
+    "stats": {
+      "possession": { "home": 54, "away": 46 },
+      "shots": { "home": 15, "away": 11 },
+      "shotsOnTarget": { "home": 6, "away": 5 },
+      "passes": { "home": 480, "away": 410 },
+      "passAccuracy": { "home": 82, "away": 79 },
+      "fouls": { "home": 14, "away": 18 },
+      "corners": { "home": 6, "away": 4 }
+    }
+  },
+  {
+    "id": "esp-mar-2022",
+    "homeTeam": "Spain",
+    "awayTeam": "Morocco",
+    "competition": "FIFA World Cup 2022 Round of 16",
+    "formations": { "home": "4-3-3", "away": "4-5-1" },
+    "events": [
+      { "minute": 1, "type": "shot", "team": "home", "player": "Olmo", "description": "Early shot saved by Bounou" },
+      { "minute": 26, "type": "substitution", "team": "away", "player": "Saïss off", "description": "Saïss forced off injured, replaced by Dari" },
+      { "minute": 55, "type": "substitution", "team": "home", "player": "Morata on", "description": "Morata replaced Ferran Torres to add aerial threat" },
+      { "minute": 60, "type": "substitution", "team": "away", "player": "Cheddira on", "description": "Fresh legs for counter-attacks" },
+      { "minute": 66, "type": "substitution", "team": "home", "player": "Soler on", "description": "Soler replaced Gavi for more creativity" },
+      { "minute": 75, "type": "substitution", "team": "away", "player": "Benoun on", "description": "Benoun replaced El Yamiq to strengthen defense" },
+      { "minute": 90, "type": "shot", "team": "home", "player": "Morata", "description": "Late header saved comfortably" },
+      { "minute": 120, "type": "shot", "team": "home", "player": "Sarabia", "description": "Hit the post in the final minute of extra time" }
+    ],
+    "stats": {
+      "possession": { "home": 76, "away": 24 },
+      "shots": { "home": 13, "away": 5 },
+      "shotsOnTarget": { "home": 1, "away": 2 },
+      "passes": { "home": 895, "away": 240 },
+      "passAccuracy": { "home": 89, "away": 72 },
+      "fouls": { "home": 8, "away": 15 },
+      "corners": { "home": 8, "away": 1 }
+    }
+  },
+  {
+    "id": "eng-fra-2022",
+    "homeTeam": "England",
+    "awayTeam": "France",
+    "competition": "FIFA World Cup 2022 Quarter-final",
+    "formations": { "home": "4-3-3", "away": "4-2-3-1" },
+    "events": [
+      { "minute": 17, "type": "goal", "team": "away", "player": "Tchouaméni", "description": "Long-range strike from outside the box into the bottom corner" },
+      { "minute": 54, "type": "goal", "team": "home", "player": "Kane", "description": "Penalty equalizer after Saka was fouled by Tchouaméni" },
+      { "minute": 78, "type": "goal", "team": "away", "player": "Giroud", "description": "Powerful header from Griezmann's cross" },
+      { "minute": 80, "type": "card", "team": "home", "player": "Maguire", "description": "Yellow card for a tactical foul" },
+      { "minute": 82, "type": "penalty", "team": "home", "player": "Kane", "description": "Penalty awarded after Mount was caught by Hernández" },
+      { "minute": 84, "type": "missed-penalty", "team": "home", "player": "Kane", "description": "Skyed over the bar — second penalty miss of the tournament" },
+      { "minute": 90, "type": "shot", "team": "home", "player": "Saka", "description": "Late curling shot saved by Lloris" },
+      { "minute": 95, "type": "substitution", "team": "home", "player": "Wilson on", "description": "Wilson replaced Trippier for attacking push" }
+    ],
+    "stats": {
+      "possession": { "home": 58, "away": 42 },
+      "shots": { "home": 8, "away": 10 },
+      "shotsOnTarget": { "home": 3, "away": 4 },
+      "passes": { "home": 520, "away": 370 },
+      "passAccuracy": { "home": 85, "away": 80 },
+      "fouls": { "home": 12, "away": 16 },
+      "corners": { "home": 5, "away": 3 }
+    }
+  }
+]
