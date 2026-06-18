@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   title: "PitchIQ AI - Explainable Soccer Intelligence",
   description:
     "Understand soccer through explainable AI. VAR explanations, tactical analysis, match storytelling, and an AI soccer companion for fans.",
+  icons: {
+    icon: "/PitchIQ_logo.png",
+  },
 };
 
 export default function RootLayout({
