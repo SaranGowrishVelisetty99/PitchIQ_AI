@@ -55,6 +55,53 @@ Interactive chat that adapts to your knowledge level.
 
 ## Architecture
 
+```mermaid
+flowchart TB
+    subgraph Orchestration["Orchestrator"]
+        ORCH["/api/agents/orchestrate<br/>Multi-Agent Orchestrator"]
+    end
+
+    subgraph Agents["Specialist Agents"]
+        FORM["Formation Agent<br/>pressing structures<br/>player roles"]
+        MOM["Momentum Agent<br/>turning points<br/>momentum waves"]
+        VAR["VAR Agent<br/>FIFA Laws<br/>referee decisions"]
+        STORY["Story Agent<br/>match narratives<br/>chapters"]
+        EXPLAIN["Explanation Agent<br/>soccer concepts<br/>tactics"]
+    end
+
+    subgraph RAG["Shared RAG Layer"]
+        RET["retriever.ts<br/>cosine similarity"]
+        KB["knowledge-base.json<br/>6 PDFs · 17 collections"]
+    end
+
+    subgraph Output["Output Format"]
+        SSE["SSE Streaming<br/>per-token + JSON"]
+        CARD["SummaryCard<br/>Summary · Reasoning<br/>Evidence · Confidence"]
+    end
+
+    ORCH --> FORM
+    ORCH --> MOM
+    ORCH --> VAR
+    ORCH --> STORY
+    ORCH --> EXPLAIN
+
+    FORM --> RET
+    MOM --> RET
+    VAR --> RET
+    STORY --> RET
+    EXPLAIN --> RET
+
+    RET --> KB
+
+    FORM --> SSE
+    MOM --> SSE
+    VAR --> SSE
+    STORY --> SSE
+    EXPLAIN --> SSE
+
+    SSE --> CARD
+```
+
 ```
 pitchiq-ai/
 ├── src/
