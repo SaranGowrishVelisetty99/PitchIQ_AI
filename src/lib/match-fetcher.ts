@@ -78,14 +78,18 @@ function extractTeamId(homeId: string, awayId: string, teamId: string): "home" |
 
 function describeEvent(detail: EspnEvent["competitions"][0]["details"][0], teamName: string, opponentName: string): string {
   const player = detail.athletesInvolved?.[0]?.displayName || "Unknown";
-  switch (detail.type.text) {
-    case "Goal": return detail.ownGoal ? `${player} (${opponentName}) — Own goal` : `${player} scored`;
-    case "Penalty - Scored": return `${player} scored from the penalty spot`;
+  const text = detail.type?.text || "";
+  if (text.startsWith("Goal") || text === "Penalty - Scored") {
+    if (detail.ownGoal) return `${player} (${opponentName}) — Own goal`;
+    if (text === "Goal" || text === "Penalty - Scored") return `${player} scored`;
+    return `${player} scored (${text})`;
+  }
+  switch (text) {
     case "Penalty - Missed": return `${player} missed penalty`;
     case "Yellow Card": return `${player} shown a yellow card`;
     case "Red Card": return `${player} shown a red card`;
     case "Substitution": return `${detail.athletesInvolved?.find(a => !a.displayName.includes(" "))?.displayName || player} substituted on`;
-    default: return `${player} — ${detail.type.text}`;
+    default: return `${player} — ${text}`;
   }
 }
 
@@ -162,12 +166,12 @@ export async function getMatchDetails(matchId: string): Promise<MatchDetail | nu
       const teamName = team === "home" ? homeName : awayName;
       const opponentName = team === "home" ? awayName : homeName;
 
+      const eventType = d.type?.text || "";
       let type = "shot";
-      if (d.type.text === "Goal" || d.type.text === "Own Goal") type = "goal";
-      else if (d.type.text === "Penalty - Scored") type = "goal";
-      else if (d.type.text === "Penalty - Missed") type = "missed-penalty";
+      if (eventType.startsWith("Goal") || eventType === "Own Goal" || eventType === "Penalty - Scored") type = "goal";
+      else if (eventType === "Penalty - Missed") type = "missed-penalty";
       else if (d.yellowCard || d.redCard) type = "card";
-      else if (d.type.text === "Substitution") type = "substitution";
+      else if (eventType === "Substitution") type = "substitution";
 
       return {
         minute: parseMinute(d.clock?.displayValue || "0'"),
