@@ -28,7 +28,7 @@ export function TunnelNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="hidden md:flex flex-col w-52 bg-pitch-800/90 backdrop-blur-sm border-r border-gold-500/10 shrink-0">
+    <nav className="hidden md:flex flex-col w-44 bg-pitch-800/90 backdrop-blur-sm border-r border-gold-500/10 shrink-0">
       <div className="flex flex-col gap-0.5 py-4 px-3">
         {navItems.map((item) => {
           const isActive = pathname === item.href;

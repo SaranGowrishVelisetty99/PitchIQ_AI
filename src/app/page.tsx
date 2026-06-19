@@ -29,10 +29,12 @@ export default function HomePage() {
          ═══════════════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden min-h-[80vh] lg:min-h-[90vh] flex items-center">
         {/* Pitch background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-pitch-900 via-pitch-800 to-pitch-900">
-          <div className="absolute inset-0 pitch-texture animate-pitchScan opacity-50" />
-          <div className="absolute inset-0 stadium-dots" />
-        </div>
+        <img
+          src="/pitchiq_background.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          fetchPriority="high"
+        />
 
         {/* Floating orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -43,16 +45,18 @@ export default function HomePage() {
         <div className="relative w-full max-w-screen-2xl mx-auto px-4 lg:px-6 pt-10 lg:pt-14 pb-20 lg:pb-32">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: Brand intro */}
-            <div className="space-y-8 animate-fadeInUp">
+            <div className="space-y-4 animate-fadeInUp">
               <div className="flex items-center gap-3">
-                <span className="text-4xl">⚽</span>
-                <div>
-                  <span className="text-2xl lg:text-3xl font-bold text-gold-500 font-scoreboard tracking-tight">
-                    PITCH<span className="text-text-primary">IQ</span> AI
-                  </span>
-                  <p className="text-[10px] text-text-tertiary uppercase tracking-widest font-semibold mt-0.5">
-                    Explainable Soccer Intelligence
-                  </p>
+                <div className="bg-black/60 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center gap-3">
+                  <span className="text-4xl">⚽</span>
+                  <div>
+                    <span className="text-2xl lg:text-3xl font-bold text-gold-500 font-scoreboard tracking-tight">
+                      Pitch<span className="text-text-primary">IQ</span> AI
+                    </span>
+                    <p className="text-[10px] text-text-tertiary tracking-widest font-semibold mt-0.5">
+                      Explainable Soccer Intelligence
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -97,39 +101,39 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════
           FIVE AGENTS — The Squad
          ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-16 lg:py-24 bg-pitch-800/30">
+      <section className="relative overflow-hidden py-8 lg:py-12 bg-pitch-800/30">
         <div className="absolute inset-0 stadium-dots pointer-events-none" />
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-6">
-          <div className="text-center mb-12 animate-fadeInUp">
+          <div className="text-center mb-6 animate-fadeInUp">
             <MatchBadge variant="info" size="sm" className="mb-3">The Squad</MatchBadge>
-            <h2 className="text-2xl lg:text-3xl font-bold text-text-primary mb-3">Five Specialized Agents</h2>
+            <h2 className="text-xl lg:text-2xl font-bold text-text-primary mb-1">Five Specialized Agents</h2>
             <p className="text-text-secondary max-w-xl mx-auto text-sm">
               Each agent brings a unique capability. Together they deliver comprehensive soccer intelligence.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {/* Formation */}
-            <Link href="/formation" className="group animate-fadeInScale" style={{ animationDelay: "0ms" }}>
-              <TacticalCard variant="elevated" className="h-full relative overflow-hidden" team="neutral">
+            <Link href="/formation" className="group animate-fadeInScale h-full" style={{ animationDelay: "0ms" }}>
+              <TacticalCard variant="elevated" className="h-full flex flex-col relative overflow-hidden" team="neutral">
                 <div className="absolute inset-0 bg-gradient-to-br from-home/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <TacticalCardContent className="relative z-10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="w-10 h-10 rounded-full bg-pitch-700 border border-gold-500/20 flex items-center justify-center text-home">
-                      <LayoutGrid className="w-5 h-5" />
+                <TacticalCardContent className="relative z-10 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="w-8 h-8 rounded-full bg-pitch-700 border border-gold-500/20 flex items-center justify-center text-home">
+                      <LayoutGrid className="w-4 h-4" />
                     </span>
                     <div>
                       <TacticalCardTitle className="group-hover:text-home transition-colors">Formation Analyst</TacticalCardTitle>
                       <p className="text-[10px] text-text-tertiary">Shape & Space</p>
                     </div>
                   </div>
-                  <div className="h-28 mb-2 flex items-center justify-center rounded-lg bg-home/5">
-                    <LayoutGrid className="w-12 h-12 text-home/20" />
+                  <div className="h-16 mb-1 flex items-center justify-center rounded-lg bg-home/5">
+                    <LayoutGrid className="w-8 h-8 text-home/20" />
                   </div>
                   <p className="text-xs text-text-tertiary leading-relaxed">
                     Detect formation changes, pressing structures, defensive blocks, and attacking patterns.
                   </p>
-                  <div className="mt-3 text-[10px] text-home font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="mt-auto text-[10px] text-home font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
                     Analyze Formation →
                   </div>
                 </TacticalCardContent>
@@ -137,26 +141,26 @@ export default function HomePage() {
             </Link>
 
             {/* Momentum */}
-            <Link href="/momentum" className="group animate-fadeInScale" style={{ animationDelay: "60ms" }}>
-              <TacticalCard variant="elevated" className="h-full relative overflow-hidden" team="neutral">
+            <Link href="/momentum" className="group animate-fadeInScale h-full" style={{ animationDelay: "60ms" }}>
+              <TacticalCard variant="elevated" className="h-full flex flex-col relative overflow-hidden" team="neutral">
                 <div className="absolute inset-0 bg-gradient-to-br from-gold-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <TacticalCardContent className="relative z-10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="w-10 h-10 rounded-full bg-pitch-700 border border-gold-500/20 flex items-center justify-center text-gold-500">
-                      <TrendingUp className="w-5 h-5" />
+                <TacticalCardContent className="relative z-10 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="w-8 h-8 rounded-full bg-pitch-700 border border-gold-500/20 flex items-center justify-center text-gold-500">
+                      <TrendingUp className="w-4 h-4" />
                     </span>
                     <div>
                       <TacticalCardTitle className="group-hover:text-gold-500 transition-colors">Momentum Tracker</TacticalCardTitle>
                       <p className="text-[10px] text-text-tertiary">The Pulse</p>
                     </div>
                   </div>
-                  <div className="h-28 mb-2 flex items-center justify-center rounded-lg bg-gold-500/5">
-                    <TrendingUp className="w-12 h-12 text-gold-500/20" />
+                  <div className="h-16 mb-1 flex items-center justify-center rounded-lg bg-gold-500/5">
+                    <TrendingUp className="w-8 h-8 text-gold-500/20" />
                   </div>
                   <p className="text-xs text-text-tertiary leading-relaxed">
                     Identify turning points, pressure phases, and dominant periods with AI-powered insights.
                   </p>
-                  <div className="mt-3 text-[10px] text-gold-500 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="mt-auto text-[10px] text-gold-500 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
                     Track Momentum →
                   </div>
                 </TacticalCardContent>
@@ -164,26 +168,26 @@ export default function HomePage() {
             </Link>
 
             {/* VAR */}
-            <Link href="/var" className="group animate-fadeInScale" style={{ animationDelay: "120ms" }}>
-              <TacticalCard variant="elevated" className="h-full relative overflow-hidden" team="neutral">
+            <Link href="/var" className="group animate-fadeInScale h-full" style={{ animationDelay: "120ms" }}>
+              <TacticalCard variant="elevated" className="h-full flex flex-col relative overflow-hidden" team="neutral">
                 <div className="absolute inset-0 bg-gradient-to-br from-var/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <TacticalCardContent className="relative z-10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="w-10 h-10 rounded-full bg-pitch-700 border border-gold-500/20 flex items-center justify-center text-var">
-                      <ShieldCheck className="w-5 h-5" />
+                <TacticalCardContent className="relative z-10 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="w-8 h-8 rounded-full bg-pitch-700 border border-gold-500/20 flex items-center justify-center text-var">
+                      <ShieldCheck className="w-4 h-4" />
                     </span>
                     <div>
                       <TacticalCardTitle className="group-hover:text-var transition-colors">VAR Explainer</TacticalCardTitle>
                       <p className="text-[10px] text-text-tertiary">Law & Order</p>
                     </div>
                   </div>
-                  <div className="h-28 mb-2 flex items-center justify-center rounded-lg bg-var/5">
-                    <ShieldCheck className="w-12 h-12 text-var/20" />
+                  <div className="h-16 mb-1 flex items-center justify-center rounded-lg bg-var/5">
+                    <ShieldCheck className="w-8 h-8 text-var/20" />
                   </div>
                   <p className="text-xs text-text-tertiary leading-relaxed">
                     Understand referee decisions with clear FIFA law citations and step-by-step reasoning.
                   </p>
-                  <div className="mt-3 text-[10px] text-var font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="mt-auto text-[10px] text-var font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
                     Review Incident →
                   </div>
                 </TacticalCardContent>
@@ -191,26 +195,26 @@ export default function HomePage() {
             </Link>
 
             {/* Story */}
-            <Link href="/story" className="group animate-fadeInScale" style={{ animationDelay: "180ms" }}>
-              <TacticalCard variant="elevated" className="h-full relative overflow-hidden" team="neutral">
+            <Link href="/story" className="group animate-fadeInScale h-full" style={{ animationDelay: "180ms" }}>
+              <TacticalCard variant="elevated" className="h-full flex flex-col relative overflow-hidden" team="neutral">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <TacticalCardContent className="relative z-10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="w-10 h-10 rounded-full bg-pitch-700 border border-gold-500/20 flex items-center justify-center text-purple-400">
-                      <BookOpen className="w-5 h-5" />
+                <TacticalCardContent className="relative z-10 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="w-8 h-8 rounded-full bg-pitch-700 border border-gold-500/20 flex items-center justify-center text-purple-400">
+                      <BookOpen className="w-4 h-4" />
                     </span>
                     <div>
                       <TacticalCardTitle className="group-hover:text-purple-400 transition-colors">Story Weaver</TacticalCardTitle>
                       <p className="text-[10px] text-text-tertiary">The Narrative</p>
                     </div>
                   </div>
-                  <div className="h-28 mb-2 flex items-center justify-center rounded-lg bg-purple-500/5">
-                    <BookOpen className="w-12 h-12 text-purple-400/20" />
+                  <div className="h-16 mb-1 flex items-center justify-center rounded-lg bg-purple-500/5">
+                    <BookOpen className="w-8 h-8 text-purple-400/20" />
                   </div>
                   <p className="text-xs text-text-tertiary leading-relaxed">
-                    Convert match statistics into compelling narratives with dramatic chapters and key moments.
+                    Convert match statistics into compelling narratives with chapters and key moments.
                   </p>
-                  <div className="mt-3 text-[10px] text-purple-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="mt-auto text-[10px] text-purple-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
                     Read the Story →
                   </div>
                 </TacticalCardContent>
@@ -218,26 +222,26 @@ export default function HomePage() {
             </Link>
 
             {/* Tactical */}
-            <Link href="/tactical" className="group animate-fadeInScale" style={{ animationDelay: "240ms" }}>
-              <TacticalCard variant="elevated" className="h-full relative overflow-hidden" team="neutral">
+            <Link href="/tactical" className="group animate-fadeInScale h-full" style={{ animationDelay: "240ms" }}>
+              <TacticalCard variant="elevated" className="h-full flex flex-col relative overflow-hidden" team="neutral">
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <TacticalCardContent className="relative z-10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="w-10 h-10 rounded-full bg-pitch-700 border border-gold-500/20 flex items-center justify-center text-indigo-400">
-                      <Brain className="w-5 h-5" />
+                <TacticalCardContent className="relative z-10 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="w-8 h-8 rounded-full bg-pitch-700 border border-gold-500/20 flex items-center justify-center text-indigo-400">
+                      <Brain className="w-4 h-4" />
                     </span>
                     <div>
                       <TacticalCardTitle className="group-hover:text-indigo-400 transition-colors">Tactical Briefing</TacticalCardTitle>
                       <p className="text-[10px] text-text-tertiary">Combined Intel</p>
                     </div>
                   </div>
-                  <div className="h-28 mb-2 flex items-center justify-center rounded-lg bg-indigo-500/5">
-                    <Brain className="w-12 h-12 text-indigo-400/20" />
+                  <div className="h-16 mb-1 flex items-center justify-center rounded-lg bg-indigo-500/5">
+                    <Brain className="w-8 h-8 text-indigo-400/20" />
                   </div>
                   <p className="text-xs text-text-tertiary leading-relaxed">
                     Combined formation and momentum analysis for comprehensive tactical breakdown.
                   </p>
-                  <div className="mt-3 text-[10px] text-indigo-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="mt-auto text-[10px] text-indigo-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
                     Enter Briefing →
                   </div>
                 </TacticalCardContent>
@@ -245,26 +249,26 @@ export default function HomePage() {
             </Link>
 
             {/* Chat */}
-            <Link href="/chat" className="group animate-fadeInScale" style={{ animationDelay: "300ms" }}>
-              <TacticalCard variant="elevated" className="h-full relative overflow-hidden" team="neutral">
+            <Link href="/chat" className="group animate-fadeInScale h-full" style={{ animationDelay: "300ms" }}>
+              <TacticalCard variant="elevated" className="h-full flex flex-col relative overflow-hidden" team="neutral">
                 <div className="absolute inset-0 bg-gradient-to-br from-gold-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <TacticalCardContent className="relative z-10">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="w-10 h-10 rounded-full bg-pitch-700 border border-gold-500/20 flex items-center justify-center text-gold-500">
-                      <MessageSquare className="w-5 h-5" />
+                <TacticalCardContent className="relative z-10 flex flex-col flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="w-8 h-8 rounded-full bg-pitch-700 border border-gold-500/20 flex items-center justify-center text-gold-500">
+                      <MessageSquare className="w-4 h-4" />
                     </span>
                     <div>
                       <TacticalCardTitle className="group-hover:text-gold-500 transition-colors">AI Dugout</TacticalCardTitle>
                       <p className="text-[10px] text-text-tertiary">Chat with All Agents</p>
                     </div>
                   </div>
-                  <div className="h-28 mb-2 flex items-center justify-center rounded-lg bg-gold-500/5">
-                    <MessageSquare className="w-12 h-12 text-gold-500/20" />
+                  <div className="h-16 mb-1 flex items-center justify-center rounded-lg bg-gold-500/5">
+                    <MessageSquare className="w-8 h-8 text-gold-500/20" />
                   </div>
                   <p className="text-xs text-text-tertiary leading-relaxed">
                     Chat with all five agents — adapting to your level from casual fan to scout.
                   </p>
-                  <div className="mt-3 text-[10px] text-gold-500 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="mt-auto text-[10px] text-gold-500 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
                     Join the Dugout →
                   </div>
                 </TacticalCardContent>
